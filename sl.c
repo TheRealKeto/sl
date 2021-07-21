@@ -1,10 +1,20 @@
 /*========================================
- *    sl.c: SL version 5.05
- *        Copyright 1993,1998,2014-2015,2019
+ *    sl.c: SL version 5.06
+ *        Copyright 1993,1998,2014-2015,2019-2021
  *                  Toyoda Masashi
  *                  (mtoyoda@acm.org)
- *        Last Modified: 2019/03/19
+ *        Last Modified: 2021/07/21
  *========================================
+ */
+/* sl version 5.06 : by Keto (TheRealKeto) 2021-07-21
+ * Several minor changes have been done, including
+ * - Add new functions to Makefile
+ *    - Add man function
+ *    - Add a function to install/uninstall sl
+ *    - Add new variables in Makefile and make it easier
+ *      to specify them for other systems
+ * - Bump sl version to 5.06
+ * - Add building notes to README (english)
  */
 /* sl version 5.05 : by eyJhb 2019-08-14
  * - Merged pull request from cosmo-ray adding orange TGV (-G)
@@ -55,7 +65,7 @@
 #include <unistd.h>
 #include "sl.h"
 
-#define VERSION "5.04"
+#define VERSION "5.06"
 
 void add_smoke(int y, int x);
 void add_man(int y, int x);
@@ -100,7 +110,7 @@ void option(char *str)
             case 'l': LOGO     = 1; break;
             case 'w': WIND     = 200; break;
             case 'v': 
-              printf("Version: %s, last updated: 2019-03-19\n", VERSION);
+              printf("Version: %s, last updated: 2021-07-21\n", VERSION);
               exit(0);
               break;
             default:

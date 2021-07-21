@@ -17,7 +17,7 @@ MANDIR ?= $(PREFIX)/share/man/man1
 all: sl
 
 sl: sl.c sl.h
-	$(CC) $(CFLAGS) -o sl sl.c $(NCURSES_FLAG)
+	$(CC) $(CFLAGS) $(LDFLAGS) -o sl sl.c $(NCURSES_FLAG)
 
 man:
 	cp -a sl.1 $(DESTDIR)$(MANDIR)
