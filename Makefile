@@ -6,31 +6,35 @@
 #	Last Modified: 2021/07/21
 #==========================================
 
-CC           ?= gcc
-CFLAGS       ?= -O3 -Wall
-NCURSES_FLAG ?= -lncurses
+CC      ?= cc
+INSTALL ?= install
+CFLAGS  ?= -O3 -Wall
+LDFLAGS ?= -lncurses
 
 PREFIX ?= /usr/local
 BINDIR ?= $(PREFIX)/bin
-MANDIR ?= $(PREFIX)/share/man/man1
+MANDIR ?= $(PREFIX)/share/man
 
 all: sl
 
-sl: sl.c sl.h
-	$(CC) $(CFLAGS) $(LDFLAGS) -o sl sl.c $(NCURSES_FLAG)
+sl: sl.c
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 man:
-	cp -a sl.1 $(DESTDIR)$(MANDIR)
+	$(INSTALL) -Dm644 sl.1 $(DESTDIR)$(MANDIR)/man1/sl.1
+	$(INSTALL) -Dm644 sl.1.ja $(DESTDIR)$(MANDIR)/ja/man1/sl.1
 
-install: sl
-	mkdir -p $(DESTDIR)$(BINDIR)
-	cp -a sl $(DESTDIR)$(BINDIR)
+install: sl man
+	$(INSTALL) -Dm755 sl $(DESTDIR)$(BINDIR)/sl
 
 clean:
 	rm -f sl
 
 uninstall: clean
 	rm -f $(DESTDIR)$(BINDIR)/sl
-	rm -f $(DESTDIR)$(MANDIR)/sl.1
+	rm -f $(DESTDIR)$(MANDIR)/man1/sl.1
+	rm -f $(DESTDIR)$(MANDIR)/ja/man1/sl.1
 
 distclean: clean
+
+.PHONY: all clean man uninstall install
