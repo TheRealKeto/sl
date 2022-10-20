@@ -3,52 +3,51 @@
 .\"
 .\"	@(#)sl.1
 .\"
-.TH SL 1 "March 19, 2019 - Version 5.04"
-.SH NAME
-sl \- display animations aimed to correct users who accidentally enter sl instead of ls.
-.SH SYNOPSIS
-.B sl
-[
-.B \-acdeFlw
-]
-.SH DESCRIPTION
-.B sl
-Displays animations aimed to correct users who accidentally enter sl instead of ls.  SL stands for Steam Locomotive.
-.PP
-.TP
-.B \-a
-An accident is occurring. People cry for help.
-.TP
-.B \-c
-C51 appears instead of D51.
-.TP
-.B \-d
-Disco mode. Alternate colors during animation.
-.TP
-.B \-e
-Escape. Allow interrupt by Ctrl+C.
-.TP
-.B \-F
-It flies like the galaxy express 999.
-.TP
-.B \-G
-It's French like Oscar.
-.TP
-.B \-<number of cars>
-Specify the number of cars like `sl -5`.
-.TP
-.B \-l
-Little version.
-.TP
-.B \-w
-Windy day. Locomotive moves faster.
-.TP
-.B \-v
-Prints the version and last updated.
-.PP
-.SH SEE ALSO
-.BR ls (1)
-.SH BUGS
+.Dd October 22, 2022
+.Dt SL 1
+.Os
+.Sh NAME
+.Nm sl
+.Nd animations for accidental typos to list files
+.Sh SYNOPSIS
+.Nm sl
+.Op Fl acdeFlw
+.Sh DESCRIPTION
+.Nm sl
+displays animations aimed to correct users who accidentally enter
+.Nm sl
+instead of ls.
+.Nm sl
+stands for Steam Locomotive.
+.Bl -tag -width -indent
+.It Fl a
+Creates an accident.
+People cry for help.
+.It Fl c
+Displays C51 instead of D51.
+.It Fl d
+Alternates colors during animation (aka disco mode).
+.It Fl e
+Enables escaping with Ctrl + C.
+.It Fl F
+Speeds up the annimation, like the galaxy express 999.
+.It Fl G
+It's French, like Oscar.
+.It Fl Op n
+Specifies the number of cars that will be displayed.
+.Ar n
+refers to the exact number of cars that will be displayed.
+.It Fl l
+Uses little version of the animation.
+.It Fl w
+Windy day.
+Locomotive moves faster.
+.It Fl v
+Prints the version & last updated info.
+.El
+.Sh SEE ALSO
+.Xr ls 1
+.Sh BUGS
 It sometimes lists directory contents.
-.SH AUTHOR
-Toyoda Masashi (mtoyoda@acm.org)
+.Sh AUTHOR
+.An Toyoda Masashi Aq Mt mtoyoda@acm.org
