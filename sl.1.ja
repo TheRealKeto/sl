@@ -3,35 +3,33 @@
 .\"		         (mtoyoda@acm.org)
 .\"	@(#)sl.1
 .\"
-.TH SL 1 "March 31, 2014"
-.SH 名称
-sl \- キータイプを矯正します。
-.SH 形式
-.B sl
-[
-.B \-alF
-]
-.SH 解説
-.B sl
+.Dd October 22, 2022
+.Dt SL 1
+.Os
+.Sh 名称
+.Nm sl
+キータイプを矯正します。
+.Sh 形式
+.Nm sl
+.Op Fl alf
+.Sh 解説
+.Nm sl
 は、高度に発展した、キータイプ矯正を目的とするアニメーションプログラムです。
-.PP
+.Pp
 次のようなオプションがあります。
-.TP
-.B \-a
+.Bl -tag -width -indent
+.It Fl a
 なにかアクシデントがあったようですね。助けを求める人々が悲痛です。
-.TP
-.B \-l
+.It Fl l
 小さくなります。
-.TP
-.B \-F
+.It Fl F
 飛びます。
-.TP
-.B \-c
+.It Fl c
 C51になります。
-.PP
-.SH 関連事項
-.BR ls (1)
-.SH バグ
+.El
+.Sh 関連事項
+.Xr ls 1
+.Sh バグ
 カレントディレクトリの内容が表示されることがあります。
-.SH 著者
-豊田 正史 (mtoyoda@acm.org)
+.Sh 著者
+.An 豊田 正史 Aq Mt mtoyoda@acm.org
