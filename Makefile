@@ -23,18 +23,19 @@ sl: sl.c
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $<
 
 man:
-	$(INSTALL) -Dm644 sl.1 $(DESTDIR)$(MANDIR)/man1/sl.1
-	$(INSTALL) -Dm644 sl.1.ja $(DESTDIR)$(MANDIR)/ja/man1/sl.1
+	$(INSTALL) -d $(addprefix $(DESTDIR)$(MANDIR)/,man1 ja/man1)
+	$(INSTALL) -m644 sl.1 $(DESTDIR)$(MANDIR)/man1/sl.1
+	$(INSTALL) -m644 sl.1.ja $(DESTDIR)$(MANDIR)/ja/man1/sl.1
 
 install: sl man
-	$(INSTALL) -Dm755 $(DESTDIR)$(BINDIR)/sl
+	$(INSTALL) -d $(DESTDIR)$(BINDIR)
+	$(INSTALL) -m755 sl $(DESTDIR)$(BINDIR)/sl
 
 clean:
-	rm -f sl
+	rm -rf sl
 
 uninstall:
-	rm -f $(DESTDIR)$(BINDIR)/sl
-	rm -f $(DESTDIR)$(MANDIR)/man1/sl.1
-	rm -f $(DESTDIR)$(MANDIR)/ja/man1/sl.1
+	rm -rf $(DESTDIR)$(BINDIR)/sl
+	rm -rf $(addprefix $(DESTDIR)$(MANDIR)/,man1/sl.1 ja/man1/sl.1)
 
 distclean: clean
