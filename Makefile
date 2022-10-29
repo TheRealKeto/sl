@@ -29,7 +29,7 @@ man:
 
 install: sl man
 	$(INSTALL) -d $(DESTDIR)$(BINDIR)
-	$(INSTALL) -m755 sl $(DESTDIR)$(BINDIR)/sl
+	$(INSTALL) -m755 sl $(DESTDIR)$(BINDIR)
 
 clean:
 	rm -rf sl
