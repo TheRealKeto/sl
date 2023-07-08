@@ -3,39 +3,38 @@
 #	Copyright 1993, 1998, 2014, 2019
 #                 Toyoda Masashi
 #		  (mtoyoda@acm.org)
-#	Last Modified: 2022/10/22
+#	Last Modified: 2023/07/08
 #==========================================
-
-CC      ?= cc
-INSTALL ?= install
-CFLAGS  ?= -O3 -Wall
-LDFLAGS ?= -lncurses
 
 PREFIX ?= /usr/local
 BINDIR ?= $(PREFIX)/bin
 MANDIR ?= $(PREFIX)/share/man
 
-.PHONY: all man install clean distclean uninstall
+CFLAGS  ?= -O3 -Wall
+LDFLAGS ?= -lncurses
 
-all: sl
+SRC := $(wildcard *.c)
+BIN := $(SRC:%.c=%)
 
-sl: sl.c
+all: $(BIN)
+
+%: %.c
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $<
 
-man:
-	$(INSTALL) -d $(addprefix $(DESTDIR)$(MANDIR)/,man1 ja/man1)
-	$(INSTALL) -m644 sl.1 $(DESTDIR)$(MANDIR)/man1/sl.1
-	$(INSTALL) -m644 sl.1.ja $(DESTDIR)$(MANDIR)/ja/man1/sl.1
+.PHONY: install
 
-install: sl man
-	$(INSTALL) -d $(DESTDIR)$(BINDIR)
-	$(INSTALL) -m755 sl $(DESTDIR)$(BINDIR)
+install: all
+	install -d $(DESTDIR)$(BINDIR)
+	install -d $(addprefix $(DESTDIR)$(MANDIR)/,man1 ja/man1)
+	install -m755 $(BIN) $(DESTDIR)$(BINDIR)
+	install -m644 sl.1 $(DESTDIR)$(MANDIR)/man1
+	install -m644 sl.1.ja $(DESTDIR)$(MANDIR)/ja/man1
+
+.PHONY: clean
 
 clean:
-	rm -rf sl
+	rm -rf $(BIN)
 
-uninstall:
-	rm -rf $(DESTDIR)$(BINDIR)/sl
-	rm -rf $(addprefix $(DESTDIR)$(MANDIR)/,man1/sl.1 ja/man1/sl.1)
+.PHONY: distclean
 
 distclean: clean
